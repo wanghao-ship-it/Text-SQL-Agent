@@ -1,0 +1,7 @@
+__pycache__/
+venv/
+.idea/
+.vscode/
+*.log
+.env
+a_config/config.ini
