@@ -1,0 +1,37 @@
+relationships:
+  - name: dept_emp_employees
+    models:
+      - dept_emp
+      - employees
+    join_type: MANY_TO_ONE
+    condition: dept_emp.emp_no = employees.emp_no
+  - name: dept_emp_departments
+    models:
+      - dept_emp
+      - departments
+    join_type: MANY_TO_ONE
+    condition: dept_emp.dept_no = departments.dept_no
+  - name: dept_manager_employees
+    models:
+      - dept_manager
+      - employees
+    join_type: MANY_TO_ONE
+    condition: dept_manager.emp_no = employees.emp_no
+  - name: dept_manager_departments
+    models:
+      - dept_manager
+      - departments
+    join_type: MANY_TO_ONE
+    condition: dept_manager.dept_no = departments.dept_no
+  - name: salaries_employees
+    models:
+      - salaries
+      - employees
+    join_type: MANY_TO_ONE
+    condition: salaries.emp_no = employees.emp_no
+  - name: titles_employees
+    models:
+      - titles
+      - employees
+    join_type: MANY_TO_ONE
+    condition: titles.emp_no = employees.emp_no

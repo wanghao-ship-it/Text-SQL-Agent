@@ -1,0 +1,39 @@
+name: employees
+properties:
+  description: "Company employees — each row represents a single employee with their personal details and hire date"
+table_reference:
+  catalog: ""
+  schema: employees_1k_full
+  table: employees
+primary_key: emp_no
+columns:
+  - name: emp_no
+    type: INT
+    not_null: true
+    properties:
+      description: "Employee number — unique identifier for each employee"
+  - name: birth_date
+    type: DATE
+    not_null: true
+    properties:
+      description: "Employee's date of birth"
+  - name: first_name
+    type: VARCHAR(14)
+    not_null: true
+    properties:
+      description: "Employee's first name"
+  - name: last_name
+    type: VARCHAR(16)
+    not_null: true
+    properties:
+      description: "Employee's last name"
+  - name: gender
+    type: "ENUM('M', 'F')"
+    not_null: true
+    properties:
+      description: "Employee's gender: M or F"
+  - name: hire_date
+    type: DATE
+    not_null: true
+    properties:
+      description: "Date the employee was hired"

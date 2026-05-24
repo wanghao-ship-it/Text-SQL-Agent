@@ -1,0 +1,19 @@
+name: departments
+properties:
+  description: "Company departments — each row represents a single department within the organization"
+table_reference:
+  catalog: ""
+  schema: employees_1k_full
+  table: departments
+primary_key: dept_no
+columns:
+  - name: dept_no
+    type: CHAR(4)
+    not_null: true
+    properties:
+      description: "Department number — unique identifier for each department"
+  - name: dept_name
+    type: VARCHAR(40)
+    not_null: true
+    properties:
+      description: "Full name of the department"

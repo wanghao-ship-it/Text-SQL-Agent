@@ -1,0 +1,341 @@
+{
+  "catalog": "wren",
+  "schema": "public",
+  "models": [
+    {
+      "name": "departments",
+      "properties": {
+        "description": "Company departments — each row represents a single department within the organization"
+      },
+      "tableReference": {
+        "catalog": "",
+        "schema": "employees_1k_full",
+        "table": "departments"
+      },
+      "primaryKey": "dept_no",
+      "columns": [
+        {
+          "name": "dept_no",
+          "type": "CHAR(4)",
+          "notNull": true,
+          "properties": {
+            "description": "Department number — unique identifier for each department"
+          }
+        },
+        {
+          "name": "dept_name",
+          "type": "VARCHAR(40)",
+          "notNull": true,
+          "properties": {
+            "description": "Full name of the department"
+          }
+        }
+      ]
+    },
+    {
+      "name": "dept_emp",
+      "properties": {
+        "description": "Department-employee assignments — tracks which employees belong to which departments and for what time period"
+      },
+      "tableReference": {
+        "catalog": "",
+        "schema": "employees_1k_full",
+        "table": "dept_emp"
+      },
+      "primaryKey": "",
+      "columns": [
+        {
+          "name": "emp_no",
+          "type": "INT",
+          "notNull": true,
+          "properties": {
+            "description": "Employee number — references employees.emp_no"
+          }
+        },
+        {
+          "name": "dept_no",
+          "type": "CHAR(4)",
+          "notNull": true,
+          "properties": {
+            "description": "Department number — references departments.dept_no"
+          }
+        },
+        {
+          "name": "from_date",
+          "type": "DATE",
+          "notNull": true,
+          "properties": {
+            "description": "Start date of the employee's assignment to this department"
+          }
+        },
+        {
+          "name": "to_date",
+          "type": "DATE",
+          "notNull": true,
+          "properties": {
+            "description": "End date of the employee's assignment to this department"
+          }
+        }
+      ]
+    },
+    {
+      "name": "dept_manager",
+      "properties": {
+        "description": "Department managers — tracks which employees have managed which departments and for what time period"
+      },
+      "tableReference": {
+        "catalog": "",
+        "schema": "employees_1k_full",
+        "table": "dept_manager"
+      },
+      "primaryKey": "",
+      "columns": [
+        {
+          "name": "emp_no",
+          "type": "INT",
+          "notNull": true,
+          "properties": {
+            "description": "Employee number — references employees.emp_no"
+          }
+        },
+        {
+          "name": "dept_no",
+          "type": "CHAR(4)",
+          "notNull": true,
+          "properties": {
+            "description": "Department number — references departments.dept_no"
+          }
+        },
+        {
+          "name": "from_date",
+          "type": "DATE",
+          "notNull": true,
+          "properties": {
+            "description": "Start date of the manager's tenure in this department"
+          }
+        },
+        {
+          "name": "to_date",
+          "type": "DATE",
+          "notNull": true,
+          "properties": {
+            "description": "End date of the manager's tenure in this department"
+          }
+        }
+      ]
+    },
+    {
+      "name": "employees",
+      "properties": {
+        "description": "Company employees — each row represents a single employee with their personal details and hire date"
+      },
+      "tableReference": {
+        "catalog": "",
+        "schema": "employees_1k_full",
+        "table": "employees"
+      },
+      "primaryKey": "emp_no",
+      "columns": [
+        {
+          "name": "emp_no",
+          "type": "INT",
+          "notNull": true,
+          "properties": {
+            "description": "Employee number — unique identifier for each employee"
+          }
+        },
+        {
+          "name": "birth_date",
+          "type": "DATE",
+          "notNull": true,
+          "properties": {
+            "description": "Employee's date of birth"
+          }
+        },
+        {
+          "name": "first_name",
+          "type": "VARCHAR(14)",
+          "notNull": true,
+          "properties": {
+            "description": "Employee's first name"
+          }
+        },
+        {
+          "name": "last_name",
+          "type": "VARCHAR(16)",
+          "notNull": true,
+          "properties": {
+            "description": "Employee's last name"
+          }
+        },
+        {
+          "name": "gender",
+          "type": "ENUM('M', 'F')",
+          "notNull": true,
+          "properties": {
+            "description": "Employee's gender: M or F"
+          }
+        },
+        {
+          "name": "hire_date",
+          "type": "DATE",
+          "notNull": true,
+          "properties": {
+            "description": "Date the employee was hired"
+          }
+        }
+      ]
+    },
+    {
+      "name": "salaries",
+      "properties": {
+        "description": "Employee salaries — tracks historical salary records for each employee with effective date ranges"
+      },
+      "tableReference": {
+        "catalog": "",
+        "schema": "employees_1k_full",
+        "table": "salaries"
+      },
+      "primaryKey": "",
+      "columns": [
+        {
+          "name": "emp_no",
+          "type": "INT",
+          "notNull": true,
+          "properties": {
+            "description": "Employee number — references employees.emp_no"
+          }
+        },
+        {
+          "name": "salary",
+          "type": "INT",
+          "notNull": true,
+          "properties": {
+            "description": "Annual salary amount"
+          }
+        },
+        {
+          "name": "from_date",
+          "type": "DATE",
+          "notNull": true,
+          "properties": {
+            "description": "Start date this salary was effective"
+          }
+        },
+        {
+          "name": "to_date",
+          "type": "DATE",
+          "notNull": true,
+          "properties": {
+            "description": "End date this salary was effective"
+          }
+        }
+      ]
+    },
+    {
+      "name": "titles",
+      "properties": {
+        "description": "Employee job titles — tracks historical job title records for each employee with effective date ranges"
+      },
+      "tableReference": {
+        "catalog": "",
+        "schema": "employees_1k_full",
+        "table": "titles"
+      },
+      "primaryKey": "",
+      "columns": [
+        {
+          "name": "emp_no",
+          "type": "INT",
+          "notNull": true,
+          "properties": {
+            "description": "Employee number — references employees.emp_no"
+          }
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(50)",
+          "notNull": true,
+          "properties": {
+            "description": "Job title of the employee"
+          }
+        },
+        {
+          "name": "from_date",
+          "type": "DATE",
+          "notNull": true,
+          "properties": {
+            "description": "Start date this title was held"
+          }
+        },
+        {
+          "name": "to_date",
+          "type": "DATE",
+          "notNull": false,
+          "properties": {
+            "description": "End date this title was held — null if currently active"
+          }
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "name": "dept_emp_employees",
+      "models": [
+        "dept_emp",
+        "employees"
+      ],
+      "joinType": "MANY_TO_ONE",
+      "condition": "dept_emp.emp_no = employees.emp_no"
+    },
+    {
+      "name": "dept_emp_departments",
+      "models": [
+        "dept_emp",
+        "departments"
+      ],
+      "joinType": "MANY_TO_ONE",
+      "condition": "dept_emp.dept_no = departments.dept_no"
+    },
+    {
+      "name": "dept_manager_employees",
+      "models": [
+        "dept_manager",
+        "employees"
+      ],
+      "joinType": "MANY_TO_ONE",
+      "condition": "dept_manager.emp_no = employees.emp_no"
+    },
+    {
+      "name": "dept_manager_departments",
+      "models": [
+        "dept_manager",
+        "departments"
+      ],
+      "joinType": "MANY_TO_ONE",
+      "condition": "dept_manager.dept_no = departments.dept_no"
+    },
+    {
+      "name": "salaries_employees",
+      "models": [
+        "salaries",
+        "employees"
+      ],
+      "joinType": "MANY_TO_ONE",
+      "condition": "salaries.emp_no = employees.emp_no"
+    },
+    {
+      "name": "titles_employees",
+      "models": [
+        "titles",
+        "employees"
+      ],
+      "joinType": "MANY_TO_ONE",
+      "condition": "titles.emp_no = employees.emp_no"
+    }
+  ],
+  "views": [],
+  "dataSource": "mysql",
+  "layoutVersion": 2
+}

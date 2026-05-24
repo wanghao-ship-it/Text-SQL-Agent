@@ -1,0 +1,29 @@
+name: dept_manager
+properties:
+  description: "Department managers — tracks which employees have managed which departments and for what time period"
+table_reference:
+  catalog: ""
+  schema: employees_1k_full
+  table: dept_manager
+primary_key: ""
+columns:
+  - name: emp_no
+    type: INT
+    not_null: true
+    properties:
+      description: "Employee number — references employees.emp_no"
+  - name: dept_no
+    type: CHAR(4)
+    not_null: true
+    properties:
+      description: "Department number — references departments.dept_no"
+  - name: from_date
+    type: DATE
+    not_null: true
+    properties:
+      description: "Start date of the manager's tenure in this department"
+  - name: to_date
+    type: DATE
+    not_null: true
+    properties:
+      description: "End date of the manager's tenure in this department"

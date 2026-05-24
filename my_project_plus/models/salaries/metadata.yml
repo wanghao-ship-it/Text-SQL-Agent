@@ -1,0 +1,29 @@
+name: salaries
+properties:
+  description: "Employee salaries — tracks historical salary records for each employee with effective date ranges"
+table_reference:
+  catalog: ""
+  schema: employees_1k_full
+  table: salaries
+primary_key: ""
+columns:
+  - name: emp_no
+    type: INT
+    not_null: true
+    properties:
+      description: "Employee number — references employees.emp_no"
+  - name: salary
+    type: INT
+    not_null: true
+    properties:
+      description: "Annual salary amount"
+  - name: from_date
+    type: DATE
+    not_null: true
+    properties:
+      description: "Start date this salary was effective"
+  - name: to_date
+    type: DATE
+    not_null: true
+    properties:
+      description: "End date this salary was effective"

@@ -1,0 +1,29 @@
+name: titles
+properties:
+  description: "Employee job titles — tracks historical job title records for each employee with effective date ranges"
+table_reference:
+  catalog: ""
+  schema: employees_1k_full
+  table: titles
+primary_key: ""
+columns:
+  - name: emp_no
+    type: INT
+    not_null: true
+    properties:
+      description: "Employee number — references employees.emp_no"
+  - name: title
+    type: VARCHAR(50)
+    not_null: true
+    properties:
+      description: "Job title of the employee"
+  - name: from_date
+    type: DATE
+    not_null: true
+    properties:
+      description: "Start date this title was held"
+  - name: to_date
+    type: DATE
+    not_null: false
+    properties:
+      description: "End date this title was held — null if currently active"
